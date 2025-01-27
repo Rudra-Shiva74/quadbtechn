@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "This is full stack project from quasb tech",
   "main": "index.js",
+  "engines": {
+    "node": "14.17.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
