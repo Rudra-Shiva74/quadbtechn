@@ -1,0 +1,41 @@
+.newsletter {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+  }
+  
+  .newsletter h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .newsletter p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .newsletter form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .newsletter input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 250px;
+  }
+  
+  .newsletter button {
+    background-color: #ffa500;
+    color: white;
+  }
+  
+  .newsletter button:hover {
+    background-color: #ff7f00;
+  }
+  

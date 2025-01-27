@@ -1,0 +1,27 @@
+.hero-banner {
+  text-align: center;
+  padding: 50px 0;
+  background-image: url('https://images.pexels.com/photos/1669799/pexels-photo-1669799.jpeg?cs=srgb&dl=pexels-fotoaibe-1669799.jpg&fm=jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white; /* Ensure text is visible on the image */
+  position: relative;
+  height: 348px; /* Match the image height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-banner h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Add a subtle shadow for better readability */
+}
+
+.hero-banner p {
+  font-size: 18px;
+  color: white; /* Ensure visibility */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Add a shadow for better readability */
+}

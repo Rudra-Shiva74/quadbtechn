@@ -1,0 +1,74 @@
+.sidebar {
+  width: 250px; /* Set a fixed width for the sidebar */
+  height: 100vh; /* Make it span the full height of the viewport */
+  background-color: #2d2d2d; /* Adjust color to your preference */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: fixed; /* Fix the sidebar position */
+  top: 0;
+  left: 0;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.menu, .settings ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  margin: 10px 0;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.menu-item:hover {
+  color: #aaa;
+}
+
+.menu-item.active {
+  font-weight: bold;
+  color: #fff;
+}
+
+
+.container {
+  margin-left: 250px; /* Leave space for the sidebar */
+  flex: 1; /* Allow this section to fill the remaining space */
+  padding: 20px;
+  overflow: auto; /* Add scroll if content overflows */
+}
+
+.products {
+  margin-top: 20px;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-table th, .product-table td {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.product-table th {
+  background-color: #f4f4f4;
+}
+.brand img {
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Ensure the image is a square */
+  border-radius: 50%; /* Makes the image round */
+  object-fit: cover; /* Ensures the image maintains proper proportions */
+  margin-bottom: 10px; /* Adds some spacing below the image */
+}

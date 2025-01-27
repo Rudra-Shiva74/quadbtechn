@@ -1,0 +1,67 @@
+.categories {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    /* Allow items to wrap when screen is small */
+}
+
+.category {
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+}
+
+.category img {
+    width: 150px; /* Increased size */
+    height: 150px; /* Increased size */
+    object-fit: cover;
+    border-radius: 50%; /* Optional: Keeps the circular shape */
+    transition: transform 0.3s ease; /* Add smooth hover effect */
+}
+
+.category img:hover {
+    transform: scale(1.1); /* Slightly enlarge image on hover */
+}
+
+.category h3 {
+    margin: 10px 0;
+}
+
+.category a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .categories {
+        justify-content: center;
+        /* Center categories on smaller screens */
+    }
+
+    .category {
+        flex: 0 0 45%;
+        /* Make each category take up 45% of the width */
+        margin: 10px 0;
+    }
+
+    .category img {
+        width: 120px; /* Adjust size for smaller screens */
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .category {
+        flex: 0 0 100%;
+        /* Make each category take up 100% of the width on very small screens */
+        margin: 10px 0;
+    }
+
+    .category img {
+        width: 100px; /* Adjust size for very small screens */
+        height: 100px;
+    }
+}
