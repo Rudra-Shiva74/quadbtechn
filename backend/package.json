@@ -4,7 +4,7 @@
   "description": "This is full stack project from quasb tech",
   "main": "index.js",
   "engines": {
-    "node": "14.17.0"
+    "node": "22.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
