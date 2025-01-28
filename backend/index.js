@@ -375,7 +375,7 @@ app.get('/api/getorderdetails/:email', verifyToken, async (req, res) => {
 });
 
 // get all the order details of user
-app.post('/api/getoneproductqnt', verifyToken, async (req, res) => {
+app.post('/api/getoneproductqnt', async (req, res) => {
     try {
         const { email, pid } = req.body;
         if (email) {

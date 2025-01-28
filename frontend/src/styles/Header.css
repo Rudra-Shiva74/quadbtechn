@@ -5,50 +5,46 @@
   padding: 15px 30px;
   background-color: #333;
   color: white;
-  position: sticky; /* Makes the header sticky */
-  top: 0; /* Sticks it to the top of the viewport */
-  z-index: 1000; /* Ensures the header stays above other elements */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow for better visibility */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
 
 .header .logo {
   font-size: 24px;
   font-weight: bold;
 }
 
-.header nav {
-  display: flex;
-  justify-content: center;
-  flex-grow: 1;
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 
-.header nav a {
-  margin: 0 15px;
-  font-size: 16px;
+.nav {
+  display: flex;
+  gap: 20px;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.nav a {
   color: white;
+  font-size: 16px;
   transition: color 0.3s;
 }
 
-.header nav a:hover {
+.nav a:hover {
   color: #ffa500;
 }
 
-.header .icons {
+.icons {
   display: flex;
   align-items: center;
   gap: 15px;
-}
-
-.header .icons i {
-  font-size: 18px;
-  color: white;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.header .icons i:hover {
-  color: #ffa500;
 }
 
 .cart-icon {
@@ -65,84 +61,63 @@
   font-weight: bold;
   border-radius: 50%;
   padding: 2px 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
   .header {
-    padding: 15px 20px;
+    padding: 10px 20px;
   }
 
   .header .logo {
     font-size: 22px;
   }
 
-  .header nav {
-    flex-grow: 0;
-    gap: 10px;
-  }
-
-  .header nav a {
+  .nav a {
     font-size: 14px;
-    margin: 0;
-  }
-
-  .header .icons {
-    gap: 12px;
   }
 }
 
 @media (max-width: 768px) {
-  .header {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    display: none;
     flex-direction: column;
-    align-items: flex-start;
+    gap: 10px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 10px 0;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav a {
     padding: 10px 20px;
-  }
-
-  .header .logo {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  .header nav {
-    flex-grow: 0;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    width: 100%; /* Ensure the nav takes full width */
-  }
-
-  .header nav a {
-    font-size: 14px;
-    margin: 0;
-    padding: 5px 0;
-    width: 100%; /* Make the links occupy the full width */
+    width: 100%;
     text-align: left;
-  }
-
-  .header .icons {
-    gap: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .header {
+    flex-direction: column;
+    align-items: flex-start;
     padding: 10px;
   }
 
   .header .logo {
     font-size: 18px;
-    margin-bottom: 8px;
   }
 
-  .header nav a {
-    font-size: 12px;
-  }
-
-  .header .icons i {
+  .icons i {
     font-size: 16px;
   }
 

@@ -160,3 +160,75 @@
   height: 300px;
   /* Adjust size as needed */
 }
+
+/* Price badges container */
+.price-badges {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Badge for discounted price */
+.discount-badge {
+  background-color: #f44336;  /* Red for discount */
+  color: white;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+/* Badge for original price */
+.original-price {
+  text-decoration: line-through;
+  font-size: 14px;
+  color: #0a0909e7;
+}
+
+/* To ensure the product image does not overlap with the badges */
+.product-image-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Product card */
+.product-card {
+  position: relative;
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card h4 {
+  font-size: 18px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.product-card button {
+  display: block;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+.product-card button:hover {
+  background-color: #45a049;
+}

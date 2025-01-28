@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+// const URL = "mongodb://localhost:27017/quadbtech";
 const URL = "mongodb+srv://quadbtechn:wEL36xOt4v2SXKCZ@cluster0.rriav.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const connectDb = async () => {
     try {

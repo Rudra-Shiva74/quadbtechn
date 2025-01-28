@@ -9,11 +9,13 @@ import { data, useNavigate } from "react-router-dom";
 import { incrementproduct } from '../Redux/CounterSlice'
 import defaultimage from '../Images/default.avif'
 import loader from '../Images/Loading.gif'
+
 export default function NewArrivals(props) {
   const [imgIndexes, setImgIndexes] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
+
   const productlist = async () => {
     try {
       const response = await axios.get(`${props.envvariable.apiUrl}get_products`, {
@@ -26,23 +28,21 @@ export default function NewArrivals(props) {
       console.log(error.response)
     }
   }
+
   const updateimage = (indexChange, pid) => {
     const product = products.find((item) => item._id === pid);
-    if (!product || !product.image) return; // Guard clause for undefined product or images
+    if (!product || !product.image) return;
 
     setImgIndexes((prev) => {
-      const currentIndex = prev[pid] || 0; // Default to 0 if not set
+      const currentIndex = prev[pid] || 0;
       const newIndex = currentIndex + indexChange;
 
-      // Ensure the new index is within bounds
       if (newIndex >= 0 && newIndex < product.image.length) {
         return { ...prev, [pid]: newIndex };
       }
-      return prev; // No change if out of bounds
+      return prev;
     });
   };
-
-
 
   const addToCart = async (id) => {
     if (!isUserLogin()) {
@@ -94,18 +94,18 @@ export default function NewArrivals(props) {
   };
 
   const getVisibleCount = () => {
-    if (window.innerWidth >= 1024) return 4; // Show 4 items on large screens
-    if (window.innerWidth >= 768) return 3; // Show 3 items on tablets
-    return 1; // Show 1 item on mobile
+    if (window.innerWidth >= 1024) return 4;
+    if (window.innerWidth >= 768) return 3;
+    return 1;
   };
 
   const showproduct = (id) => {
     navigate(`/showproduct/${id}`)
   }
+
   return (
     <section className="new-arrivals">
-      {!props.like &&
-        <h2>New Arrivals</h2>}
+      {!props.like && <h2>New Arrivals</h2>}
       <div className="slider-container">
         <button className="slider-btn left" onClick={slideLeft}>
           &#8249;
@@ -120,6 +120,12 @@ export default function NewArrivals(props) {
           >
             {(products.length > 0) ? products.map((product) => (
               <div key={product._id} className="product-card">
+                <div className="price-badges">
+                  {product.price && (
+                    <span className="discount-badge">₹ {product.price}</span>
+                  )}
+                  <span className="original-price">₹ {product.originnalPrice}</span>
+                </div>
                 <div className="product-image-wrapper">
                   <span
                     className="slider-icon left"
@@ -142,12 +148,13 @@ export default function NewArrivals(props) {
                   </span>
                 </div>
                 <h4>{product.name}</h4>
-                <p>₹ {product.price}</p>
                 <button onClick={() => addToCart(product._id)}>Add to cart</button>
               </div>
-            )) : <div className="loader-wrapper">
-              <img className="loader-image" src={loader} alt="Loading..." />
-            </div>}
+            )) : (
+              <div className="loader-wrapper">
+                <img className="loader-image" src={loader} alt="Loading..." />
+              </div>
+            )}
           </div>
         </div>
         <button className="slider-btn right" onClick={slideRight}>

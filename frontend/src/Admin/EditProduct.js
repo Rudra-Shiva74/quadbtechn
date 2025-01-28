@@ -258,11 +258,32 @@ const EditProduct = (props) => {
                 </FormField>
 
                 <FormField>
+                    <Label>Original Price</Label>
+                    <Input
+                        type="number"
+                        name="originnalPrice"
+                        value={formData.originnalPrice}
+                        onChange={handleChange}
+                    />
+                </FormField>
+
+                <FormField>
+                    <Label>Discount (%)</Label>
+                    <Input
+                        type="number"
+                        min={1} max={90}
+                        name="discount"
+                        value={formData.discount}
+                        onChange={handleChange}
+                    />
+                </FormField>
+
+                <FormField>
                     <Label>Price</Label>
                     <Input
                         type="number"
                         name="price" min={1}
-                        value={formData.price}
+                        value={parseInt(parseInt(formData.originnalPrice) - (parseInt(formData.originnalPrice) * (formData.discount / 100)))}
                         onChange={handleChange}
                         required
                     />
@@ -315,17 +336,6 @@ const EditProduct = (props) => {
                 </FormField>
 
                 <FormField>
-                    <Label>Discount (%)</Label>
-                    <Input
-                        type="number"
-                        min={1}
-                        name="discount"
-                        value={formData.discount}
-                        onChange={handleChange}
-                    />
-                </FormField>
-
-                <FormField>
                     <Label>Height (cm)</Label>
                     <Input
                         type="number"
@@ -353,16 +363,6 @@ const EditProduct = (props) => {
                         name="addistiondetails"
                         rows="4"
                         value={formData.addistiondetails}
-                        onChange={handleChange}
-                    />
-                </FormField>
-
-                <FormField>
-                    <Label>Original Price</Label>
-                    <Input
-                        type="number"
-                        name="originnalPrice"
-                        value={formData.originnalPrice}
                         onChange={handleChange}
                     />
                 </FormField>

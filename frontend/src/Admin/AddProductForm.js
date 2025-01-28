@@ -97,6 +97,7 @@ const ProductForm = (props) => {
   });
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
+
     if (type === "file") {
       if (files.length > 5) {
         alert("You can upload a maximum of 5 images.");
@@ -104,11 +105,21 @@ const ProductForm = (props) => {
       }
       setFormData({ ...formData, [name]: files });
     } else {
-      setFormData({ ...formData, [name]: value });
+      const updatedFormData = { ...formData, [name]: value };
+
+      // Recalculate the price when either original price or discount changes
+      if (name === "originnalPrice" || name === "discount") {
+        const price = updatedFormData.originnalPrice - (updatedFormData.originnalPrice * (updatedFormData.discount / 100));
+        updatedFormData.price = price;
+      }
+
+      setFormData(updatedFormData);
     }
   };
 
+
   const handleSubmit = async (e) => {
+    console.log(formData);
     e.preventDefault();
 
     const formDataObj = new FormData();
@@ -183,10 +194,19 @@ const ProductForm = (props) => {
           <Label>Name</Label>
           <Input type="text" name="name" value={formData.name} onChange={handleChange} required />
         </FormField>
+        <FormField>
+          <Label>Original Price</Label>
+          <Input type="number" name="originnalPrice" min={1} value={formData.originnalPrice} onChange={handleChange} />
+        </FormField>
+
+        <FormField>
+          <Label>Discount (%)</Label>
+          <Input type="number" min={1} max={90} name="discount" value={formData.discount} onChange={handleChange} />
+        </FormField>
 
         <FormField>
           <Label>Price</Label>
-          <Input type="number" name="price" min={1} value={formData.price} onChange={handleChange} required />
+          <Input type="number" name="price" min={1} value={parseInt(parseInt(formData.originnalPrice) - (parseInt(formData.originnalPrice) * (formData.discount / 100)))} onChange={handleChange} required />
         </FormField>
 
         <FormField>
@@ -212,10 +232,6 @@ const ProductForm = (props) => {
         </FormField>
 
         <FormField>
-          <Label>Discount (%)</Label>
-          <Input type="number" min={1} name="discount" value={formData.discount} onChange={handleChange} />
-        </FormField>
-        <FormField>
           <Label>Height (cm)</Label>
           <Input type="number" name="height" min={1} value={formData.height} onChange={handleChange} />
         </FormField>
@@ -229,10 +245,6 @@ const ProductForm = (props) => {
           <TextArea name="addistiondetails" rows="4" value={formData.addistiondetails} onChange={handleChange} />
         </FormField>
 
-        <FormField>
-          <Label>Original Price</Label>
-          <Input type="number" name="originnalPrice" value={formData.originnalPrice} onChange={handleChange} />
-        </FormField>
 
         <FormField>
           <Label>Quantity</Label>
