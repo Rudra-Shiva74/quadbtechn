@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FiEye, FiEyeOff } from 'react-icons/fi';  // Import the eye icons
 import { isUserLogin } from "../User/Auth";
+import image from '../Images/image.gif'
 
 const Container = styled.div`
   display: flex;
@@ -132,9 +133,11 @@ const SignupPage = (props) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [loading, setLoading] = useState(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(false);
     try {
       const response = await axios.post(
         `${props.envvariable.apiUrl}user_registration`,
@@ -149,6 +152,7 @@ const SignupPage = (props) => {
           },
         }
       );
+      setLoading(true);
       toast.success(`${response.data.message}`, {
         position: "top-center",
         autoClose: 504,
@@ -163,6 +167,7 @@ const SignupPage = (props) => {
         navigate('/signin');
       }, 2000);
     } catch (error) {
+      setLoading(true);
       console.log(error)
       toast.error(`${error.response.data.message}`, {
         position: "top-center",
@@ -232,8 +237,8 @@ const SignupPage = (props) => {
               <input type="checkbox" /> I agree with <b>Privacy Policy</b> and{" "}
               <b>Term of Use</b>
             </label>
-          </RememberContainer>
-          <Button type="submit">Sign Up</Button>
+          </RememberContainer>{loading ?
+            <Button type="submit">Sign Up</Button> : <Button disabled><img src={image} style={{ height: "20px" }} /></Button>}
         </Form>
       </RightSection>
       <ToastContainer />

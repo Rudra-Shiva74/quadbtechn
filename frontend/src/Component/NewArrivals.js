@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { data, useNavigate } from "react-router-dom";
 import { incrementproduct } from '../Redux/CounterSlice'
 import defaultimage from '../Images/default.avif'
+import loader from '../Images/Loading.gif'
 export default function NewArrivals(props) {
   const [imgIndexes, setImgIndexes] = useState({});
   const navigate = useNavigate();
@@ -117,7 +118,7 @@ export default function NewArrivals(props) {
               transition: "transform 0.5s ease-in-out",
             }}
           >
-            {products.map((product) => (
+            {(products.length > 0) ? products.map((product) => (
               <div key={product._id} className="product-card">
                 <div className="product-image-wrapper">
                   <span
@@ -144,7 +145,9 @@ export default function NewArrivals(props) {
                 <p>₹ {product.price}</p>
                 <button onClick={() => addToCart(product._id)}>Add to cart</button>
               </div>
-            ))}
+            )) : <div className="loader-wrapper">
+              <img className="loader-image" src={loader} alt="Loading..." />
+            </div>}
           </div>
         </div>
         <button className="slider-btn right" onClick={slideRight}>

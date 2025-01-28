@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useNavigate } from "react-router-dom";
 import { isAdminLogin } from "./Auth";
+import image from '../Images/image.gif'
 
 const Container = styled.div`
   display: flex;
@@ -94,8 +95,10 @@ export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(true);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(false);
     try {
       const response = await axios.post(
         `${props.envvariable.apiUrl}admin_login`, // Assuming this is the correct endpoint
@@ -109,6 +112,7 @@ export default function Login(props) {
           },
         }
       );
+      setLoading(true);
       localStorage.setItem("admin", JSON.stringify(response.data.response));
       localStorage.setItem("token", response.data.token);
       toast.success(`${response.data.message}`, {
@@ -125,6 +129,7 @@ export default function Login(props) {
         navigate('/');
       }, 2000);
     } catch (error) {
+      setLoading(true);
       toast.error(`${error.response.data.message}`, {
         position: "top-center",
         autoClose: 504,
@@ -168,8 +173,8 @@ export default function Login(props) {
             <EyeIcon onClick={() => setShowPassword(!showPassword)}>
               {showPassword ? <FiEyeOff size={20} /> : <FiEye size={20} />}
             </EyeIcon>
-          </InputContainer>
-          <Button type="submit">Sign In</Button>
+          </InputContainer>{loading ?
+            <Button type="submit">Sign In</Button> : <Button disabled><img src={image} style={{ height: "20px" }} /></Button>}
         </Form>
       </RightSection>
       <ToastContainer />

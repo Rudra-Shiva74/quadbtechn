@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { isUserLogin } from "../User/Auth";
 import { useNavigate } from "react-router-dom";
+import image from '../Images/image.gif'
 
 const Container = styled.div`
   display: flex;
@@ -131,8 +132,10 @@ const SignInPage = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(true);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(false);
     try {
       const response = await axios.post(
         `${props.envvariable.apiUrl}user_login`, // Assuming this is the correct endpoint
@@ -146,6 +149,7 @@ const SignInPage = (props) => {
           },
         }
       );
+      setLoading(true);
       localStorage.setItem("user", JSON.stringify(response.data.response));
       localStorage.setItem("token", response.data.token);
       toast.success(`${response.data.message}`, {
@@ -162,6 +166,7 @@ const SignInPage = (props) => {
         navigate('/');
       }, 2000);
     } catch (error) {
+      setLoading(true);
       toast.error(`${error.response.data.message}`, {
         position: "top-center",
         autoClose: 504,
@@ -215,7 +220,8 @@ const SignInPage = (props) => {
             </label> */}
             <Link to={'/adminlogin'}>Admin Login</Link>
           </RememberContainer>
-          <Button type="submit">Sign In</Button>
+          {loading ?
+            <Button type="submit">Sign In</Button> : <Button disabled><img src={image} style={{ height: "20px" }} /></Button>}
         </Form>
       </RightSection>
       <ToastContainer />

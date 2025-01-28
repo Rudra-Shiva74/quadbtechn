@@ -5,6 +5,7 @@ import sale from "../Images/product.png";
 import "../styles/ProductList.css";
 import { isAdminLogin } from "../Admin/Auth";
 import FilterBar from "./FilterBar";
+import loader from '../Images/Loading.gif'
 
 const ProductList = (props) => {
   const [products, setProducts] = useState([]);
@@ -90,14 +91,16 @@ const ProductList = (props) => {
         onSortChange={setSelectedSort}
       />
       <div className="product-list">
-        {displayedProducts.map((product) => (
+        {displayedProducts.length > 0 ? displayedProducts.map((product) => (
           <ProductCard
             key={product._id}
             product={product}
             envvariable={props.envvariable}
             changecontent={props.changecontent}
           />
-        ))}
+        )) : <div className="loader-wrapper">
+          <img className="loader-image" src={loader} alt="Loading..." />
+        </div>}
       </div>
       {/* Show More Button */}
       {displayedProducts.length < filteredProducts.length && (
