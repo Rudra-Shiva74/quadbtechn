@@ -28,7 +28,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cors({
-    origin: "http://localhost:3000"
+    origin: "https://quadbtechn.vercel.app"
 }))
 
 // Create a new product
