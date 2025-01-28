@@ -16,7 +16,7 @@ const ProductList = (props) => {
   const [selectedSort, setSelectedSort] = useState("Popularity");
 
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 16; // Number of products per page
+  const pageSize = 20; // Number of products per page
 
   const productlist = async () => {
     try {

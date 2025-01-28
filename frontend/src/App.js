@@ -28,6 +28,7 @@ import ProductPage from "./Component/ProductPage.js";
 import Checkout from "./User/Checkout.js";
 import OrderConfirm from "./User/OrderConfirm.js";
 import EditProduct from "./Admin/EditProduct.js";
+import Sales from "./Component/Sales.js";
 function AppContent() {
 
   const apiUrl = process.env.REACT_APP_API_URL;
@@ -81,6 +82,7 @@ function AppContent() {
             <CategorySection />
             <NewArrivals envvariable={envvariable} />
             <FeaturesSection />
+            <Sales />
             <Newsletter />
             <Footer /></>}
         </>} />
