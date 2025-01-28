@@ -1,7 +1,8 @@
 /* Main container to hold sidebar and product table */
 .main-container {
   display: flex;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
+  /* Full viewport height */
 }
 
 /* Sidebar */
@@ -41,7 +42,8 @@
 
 /* Content section */
 .content {
-  flex: 1; /* Take remaining space */
+  flex: 1;
+  /* Take remaining space */
   padding: 20px;
   overflow-y: auto;
   background-color: #f9f9f9;
@@ -81,6 +83,7 @@
   border: none;
   cursor: pointer;
 }
+
 .stats-container {
   display: flex;
   justify-content: space-between;
@@ -89,7 +92,8 @@
 }
 
 .stat-card {
-  flex: 1; /* Makes all cards equal in width */
+  flex: 1;
+  /* Makes all cards equal in width */
   background-color: #f4f4f4;
   border: 1px solid #ddd;
   border-radius: 8px;

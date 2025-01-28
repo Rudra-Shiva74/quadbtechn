@@ -5,6 +5,7 @@ import { FaEdit } from "react-icons/fa";
 import axios from "axios";
 import defaultimage from "../Images/default.avif";
 import { isAdminLogin } from "./Auth";
+import loader from '../Images/Loading.gif'
 
 function ProductTable(props) {
   const [products, setProducts] = useState([]);
@@ -27,10 +28,10 @@ function ProductTable(props) {
   };
 
   const showproduct = (id) => {
-      if (isAdminLogin()) {
-        props.changecontent(5, id);
-      }
+    if (isAdminLogin()) {
+      props.changecontent(5, id);
     }
+  }
 
   // Delete Product
   const deleteproduct = async (id) => {
@@ -76,7 +77,7 @@ function ProductTable(props) {
           </tr>
         </thead>
         <tbody>
-          {currentProducts.map((product, index) => (
+          {currentProducts.length > 0 ? currentProducts.map((product, index) => (
             <tr key={index}>
               <td>
                 <img
@@ -103,7 +104,9 @@ function ProductTable(props) {
                 />
               </td>
             </tr>
-          ))}
+          )) : <div className="loader-wrapper">
+            <img className="loader-image" src={loader} alt="Loading..." />
+          </div>}
         </tbody>
       </table>
 
