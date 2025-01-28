@@ -28,7 +28,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cors({
-    origin: "http://localhost:3000"
+    origin: "https://quadbtechn.vercel.app"
 }))
 
 // Create a new product
@@ -375,7 +375,7 @@ app.get('/api/getorderdetails/:email', verifyToken, async (req, res) => {
 });
 
 // get all the order details of user
-app.post('/api/getoneproductqnt', async (req, res) => {
+app.post('/api/getoneproductqnt', verifyToken, async (req, res) => {
     try {
         const { email, pid } = req.body;
         if (email) {
@@ -407,7 +407,7 @@ app.post('/api/getoneproductqnt', async (req, res) => {
 
 
 // update status of order
-app.post('/api/updateorderstatus', async (req, res) => {
+app.post('/api/updateorderstatus', verifyToken, async (req, res) => {
     try {
         const cancelorder = await Checkouts.updateOne({ _id: req.body.orderId }, { status: req.body.status });
         return res.status(200).json({ cancelorder, message: "Order Update Stutus" });
