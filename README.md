@@ -7,6 +7,7 @@
 - [Installation](#installation)
 - [Running the QuadB Tech](#running-the-project)
 - [Scripts](#scripts)
+- [Notes](#notes)
 
 ---
 
@@ -59,7 +60,7 @@ This project consists of a frontend built with React.js and a backend built with
 1. Start the backend server:
     ```bash
     cd backend
-    npm start
+    nodemon index.js
     ```
 
 2. Start the frontend development server:
@@ -82,9 +83,7 @@ This project consists of a frontend built with React.js and a backend built with
 
 ### Backend Scripts
 
-- `npm start`: Starts the backend server.
-- `npm run dev`: Starts the backend server in development mode (e.g., using nodemon).
-- `npm test`: Runs the test suite.
+- `nodemon index.js`: Starts the backend server
 
 ---
 
@@ -92,5 +91,8 @@ This project consists of a frontend built with React.js and a backend built with
 
 - Ensure that the environment variables required by the backend are set up correctly. (e.g., `.env` file in the `backend` folder).
 - Verify that the frontend and backend are configured to communicate properly (e.g., proxy settings in `frontend/package.json`).
+- Admin Credentials:
+  - **Username:** `abhishek@admin.com`
+  - **Password:** `admin`
 
 Feel free to contribute by submitting pull requests or reporting issues!
